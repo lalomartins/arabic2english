@@ -5,7 +5,7 @@ const BOUND_UPPER = 1000;
 
 function number2English(num) {
   if (num >= BOUND_UPPER || num < BOUND_LOWER) {
-    throw('Input out of bounds');
+    throw 'Input out of bounds';
   }
   if (num < 10) {
     return dictionary.singles[num];
@@ -47,10 +47,10 @@ function processCommandLine() {
   }
 }
 
-const m = module.exports = {
+const m = (module.exports = {
   number2English,
   processCommandLine,
-};
+});
 
 if (require.main === module) {
   processCommandLine();

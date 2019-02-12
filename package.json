@@ -4,7 +4,9 @@
   "description": "Spell out numbers in English",
   "main": "arabic2english.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prettier-check": "prettier --check *.js",
+    "prettier-fix": "prettier --write *.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/lalomartins/arabic2english#readme",
   "devDependencies": {
-    "jest": "^24.1.0"
+    "jest": "^24.1.0",
+    "prettier": "^1.16.4"
   }
 }
