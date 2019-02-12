@@ -66,7 +66,7 @@ describe('Convert numbers to English', () => {
   });
 
   test('throws if out of bonds', () => {
-    expect(() => program.number2English(1000000)).toThrow('Input out of bounds');
+    expect(() => program.number2English(Math.pow(10, 75))).toThrow('Input out of bounds');
     expect(() => program.number2English(-1)).toThrow('Input out of bounds');
   });
 
@@ -97,5 +97,19 @@ describe('Convert numbers to English', () => {
     expect(program.number2English(20030)).toBe('twenty thousand and thirty');
     expect(program.number2English(50230)).toBe('fifty thousand, two hundred and thirty');
     expect(program.number2English(170175)).toBe('one hundred and seventy thousand, one hundred seventy-five');
+  });
+
+  test('converts huge numbers', () => {
+    // generated random numbers with a script,
+    // convert with https://www.calculatorsoup.com/calculators/conversions/numberstowords.php,
+    // adjust for our style
+    expect(program.number2English(1000000000)).toBe('one billion');
+    expect(program.number2English(31633480835797064636738568192)).toBe('thirty-one octillion, six hundred thirty-three septillion, four hundred and eighty sextillion, eight hundred thirty-five quintillion, seven hundred ninety-seven quadrillion, sixty-four trillion, six hundred thirty-six billion, seven hundred thirty-eight million, five hundred sixty-eight thousand, one hundred ninety-two');
+    expect(program.number2English(952222400205342968005877367354498122223452668204152782848)).toBe('nine hundred fifty-two septendecillion, two hundred twenty-two sexdecillion, four hundred quindecillion, two hundred and five quattuordecillion, three hundred forty-two tredecillion, nine hundred sixty-eight duodecillion, five undecillion, eight hundred seventy-seven decillion, three hundred sixty-seven nonillion, three hundred fifty-four octillion, four hundred ninety-eight septillion, one hundred twenty-two sextillion, two hundred twenty-three quintillion, four hundred fifty-two quadrillion, six hundred sixty-eight trillion, two hundred and four billion, one hundred fifty-two million, seven hundred eighty-two thousand, eight hundred forty-eight');
+    expect(program.number2English(7889921769705763457906471773792204167688749056)).toBe('seven quattuordecillion, eight hundred eighty-nine tredecillion, nine hundred twenty-one duodecillion, seven hundred sixty-nine undecillion, seven hundred and five decillion, seven hundred sixty-three nonillion, four hundred fifty-seven octillion, nine hundred and six septillion, four hundred seventy-one sextillion, seven hundred seventy-three quintillion, seven hundred ninety-two quadrillion, two hundred and four trillion, one hundred sixty-seven billion, six hundred eighty-eight million, seven hundred forty-nine thousand, fifty-six');
+    expect(program.number2English(574511550525090418809077948050569577164479397888)).toBe('five hundred seventy-four quattuordecillion, five hundred and eleven tredecillion, five hundred and fifty duodecillion, five hundred twenty-five undecillion, ninety decillion, four hundred and eighteen nonillion, eight hundred and nine octillion, seventy-seven septillion, nine hundred forty-eight sextillion, fifty quintillion, five hundred sixty-nine quadrillion, five hundred seventy-seven trillion, one hundred sixty-four billion, four hundred seventy-nine million, three hundred ninety-seven thousand, eight hundred eighty-eight');
+    expect(program.number2English(5379063027219746767084411761939801466537860309538507164781379584)).toBe('five vigintillion, three hundred seventy-nine novemdecillion, sixty-three octodecillion, twenty-seven septendecillion, two hundred and nineteen sexdecillion, seven hundred forty-six quindecillion, seven hundred sixty-seven quattuordecillion, eighty-four tredecillion, four hundred and eleven duodecillion, seven hundred sixty-one undecillion, nine hundred thirty-nine decillion, eight hundred and one nonillion, four hundred sixty-six octillion, five hundred thirty-seven septillion, eight hundred sixty sextillion, three hundred and nine quintillion, five hundred thirty-eight quadrillion, five hundred and seven trillion, one hundred sixty-four billion, seven hundred eighty-one million, three hundred seventy-nine thousand, five hundred eighty-four');
+    expect(program.number2English(2178970809)).toBe('two billion, one hundred seventy-eight million, nine hundred seventy thousand, eight hundred and nine');
+    expect(program.number2English(3909655979275330256896)).toBe('three sextillion, nine hundred and nine quintillion, six hundred fifty-five quadrillion, nine hundred seventy-nine trillion, two hundred seventy-five billion, three hundred and thirty million, two hundred fifty-six thousand, eight hundred ninety-six');
   });
 });

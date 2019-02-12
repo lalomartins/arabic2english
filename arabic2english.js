@@ -1,7 +1,7 @@
 const dictionary = require('./dictionary');
 
 const BOUND_LOWER = 0;
-const BOUND_UPPER = 1000000;
+const BOUND_UPPER = Math.pow(10, 66);
 
 function number2English(num) {
   if (num >= BOUND_UPPER || num < BOUND_LOWER) {
