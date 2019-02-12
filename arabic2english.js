@@ -1,5 +1,5 @@
 const BOUND_LOWER = 0;
-const BOUND_UPPER = 10;
+const BOUND_UPPER = 20;
 
 const SINGLE_DIGITS = [
   'zero',
@@ -14,11 +14,29 @@ const SINGLE_DIGITS = [
   'nine',
 ];
 
+const TEENS = [
+  'ten',
+  'eleven',
+  'twelve',
+  'thirteen',
+  'fourteen',
+  'fifteen',
+  'sixteen',
+  'seventeen',
+  'eighteen',
+  'nineteen',
+];
+
 function number2English(num) {
   if (num >= BOUND_UPPER || num < BOUND_LOWER) {
     throw('Input out of bounds');
   }
-  return SINGLE_DIGITS[num];
+  if (num < 10) {
+    return SINGLE_DIGITS[num];
+  }
+  if (num < 20) {
+    return TEENS[num - 10];
+  }
 }
 
 function processCommandLine() {
