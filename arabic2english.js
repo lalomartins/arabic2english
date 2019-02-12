@@ -1,10 +1,24 @@
 const BOUND_LOWER = 0;
 const BOUND_UPPER = 10;
 
+const SINGLE_DIGITS = [
+  'zero',
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+];
+
 function number2English(num) {
   if (num >= BOUND_UPPER || num < BOUND_LOWER) {
     throw('Input out of bounds');
   }
+  return SINGLE_DIGITS[num];
 }
 
 function processCommandLine() {
