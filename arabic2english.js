@@ -4,7 +4,7 @@ function number2English(num) {
 function processCommandLine() {
 }
 
-module.exports = {
+const m = module.exports = {
   number2English,
   processCommandLine,
 };
