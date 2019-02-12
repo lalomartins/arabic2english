@@ -90,4 +90,12 @@ describe('Convert numbers to English', () => {
     expect(program.number2English(717)).toBe('seven hundred and seventeen');
     expect(program.number2English(750)).toBe('seven hundred and fifty');
   });
+
+  test('converts numbers with thousands', () => {
+    expect(program.number2English(1000)).toBe('one thousand');
+    expect(program.number2English(5023)).toBe('five thousand and twenty-three');
+    expect(program.number2English(20030)).toBe('twenty thousand and thirty');
+    expect(program.number2English(50230)).toBe('fifty thousand, two hundred and thirty');
+    expect(program.number2English(170175)).toBe('one hundred and seventy thousand, one hundred and seventy-five');
+  });
 });
