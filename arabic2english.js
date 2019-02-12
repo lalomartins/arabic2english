@@ -1,5 +1,5 @@
 const BOUND_LOWER = 0;
-const BOUND_UPPER = 20;
+const BOUND_UPPER = 100;
 
 const SINGLE_DIGITS = [
   'zero',
@@ -27,6 +27,19 @@ const TEENS = [
   'nineteen',
 ];
 
+const TENS = [
+  'zero',
+  'ten',
+  'twenty',
+  'thirty',
+  'fourty',
+  'fifty',
+  'sixty',
+  'seventy',
+  'eighty',
+  'ninety',
+];
+
 function number2English(num) {
   if (num >= BOUND_UPPER || num < BOUND_LOWER) {
     throw('Input out of bounds');
@@ -36,6 +49,13 @@ function number2English(num) {
   }
   if (num < 20) {
     return TEENS[num - 10];
+  }
+  if (num < 100) {
+    if (num % 10 === 0) {
+      return TENS[Math.floor(num / 10) % 10];
+    } else {
+      return `${TENS[Math.floor(num / 10) % 10]}-${number2English(num % 10)}`;
+    }
   }
 }
 

@@ -76,9 +76,9 @@ describe('Convert numbers to English', () => {
     expect(program.number2English(12)).toBe('twelve');
     expect(program.number2English(13)).toBe('thirteen');
     expect(program.number2English(17)).toBe('seventeen');
-    // expect(program.number2English(23)).toBe('twenty-three');
-    // expect(program.number2English(50)).toBe('fifty');
-    // expect(program.number2English(75)).toBe('seventy-five');
-    // expect(program.number2English(99)).toBe('ninety-nine');
+    expect(program.number2English(23)).toBe('twenty-three');
+    expect(program.number2English(50)).toBe('fifty');
+    expect(program.number2English(75)).toBe('seventy-five');
+    expect(program.number2English(99)).toBe('ninety-nine');
   });
 });
