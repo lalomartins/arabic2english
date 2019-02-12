@@ -66,7 +66,7 @@ describe('Convert numbers to English', () => {
   });
 
   test('throws if out of bonds', () => {
-    expect(() => program.number2English(1000)).toThrow('Input out of bounds');
+    expect(() => program.number2English(1000000)).toThrow('Input out of bounds');
     expect(() => program.number2English(-1)).toThrow('Input out of bounds');
   });
 
@@ -96,6 +96,6 @@ describe('Convert numbers to English', () => {
     expect(program.number2English(5023)).toBe('five thousand and twenty-three');
     expect(program.number2English(20030)).toBe('twenty thousand and thirty');
     expect(program.number2English(50230)).toBe('fifty thousand, two hundred and thirty');
-    expect(program.number2English(170175)).toBe('one hundred and seventy thousand, one hundred and seventy-five');
+    expect(program.number2English(170175)).toBe('one hundred and seventy thousand, one hundred seventy-five');
   });
 });

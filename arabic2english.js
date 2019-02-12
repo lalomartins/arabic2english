@@ -1,7 +1,7 @@
 const dictionary = require('./dictionary');
 
 const BOUND_LOWER = 0;
-const BOUND_UPPER = 1000;
+const BOUND_UPPER = 1000000;
 
 function number2English(num) {
   if (num >= BOUND_UPPER || num < BOUND_LOWER) {
@@ -30,6 +30,14 @@ function number2English(num) {
     } else {
       return `${hundreds} ${number2English(num % 100)}`;
     }
+  }
+  const thousands = `${number2English(Math.floor(num / 1000))} thousand`;
+  if (num % 1000 === 0) {
+    return thousands;
+  } else if (num % 1000 < 100 || num % 100 === 0) {
+    return `${thousands} and ${number2English(num % 1000)}`;
+  } else {
+    return `${thousands}, ${number2English(num % 1000)}`;
   }
 }
 
