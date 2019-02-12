@@ -1,0 +1,22 @@
+{
+  "name": "arabic2english",
+  "version": "1.0.0",
+  "description": "Spell out numbers in English",
+  "main": "arabic2english.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lalomartins/arabic2english.git"
+  },
+  "author": "Lalo Martins <lalo.martins@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lalomartins/arabic2english/issues"
+  },
+  "homepage": "https://github.com/lalomartins/arabic2english#readme",
+  "devDependencies": {
+    "jest": "^24.1.0"
+  }
+}
