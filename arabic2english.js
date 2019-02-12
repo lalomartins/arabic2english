@@ -35,14 +35,34 @@ function number2English(num) {
       return `${hundreds} ${number2English(num % 100)}`;
     }
   }
-  const thousands = `${number2English(Math.floor(num / 1000))} thousand`;
-  if (num % 1000 === 0) {
-    return thousands;
-  } else if (num % 1000 < 100 || num % 100 === 0) {
-    return `${thousands} and ${number2English(num % 1000)}`;
-  } else {
-    return `${thousands}, ${number2English(num % 1000)}`;
+  if (num < 1000000) {
+    const thousands = `${number2English(Math.floor(num / 1000))} thousand`;
+    if (num % 1000 === 0) {
+      return thousands;
+    } else if (num % 1000 < 100 || num % 100 === 0) {
+      return `${thousands} and ${number2English(num % 1000)}`;
+    } else {
+      return `${thousands}, ${number2English(num % 1000)}`;
+    }
   }
+
+  // larger numbers
+  const scale = Math.floor((num.precision(true) - 1) / 3);
+  const accumulated = [];
+  let step = scale;
+  while (step > 1) {
+    const floor = bignum(1000).pow(step);
+    const relevant = num.idiv(floor).mod(1000);
+    if (relevant !== 0) {
+      accumulated.push(`${number2English(relevant)} ${dictionary.powerOfThousand[step]}`);
+    }
+    if (num % floor === 0) {
+      return accumulated.join(', ');
+    }
+    step -= 1;
+  }
+  accumulated.push(number2English(num.mod(1000000)));
+  return accumulated.join(', ');
 }
 
 function processCommandLine() {
