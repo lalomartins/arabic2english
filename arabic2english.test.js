@@ -114,4 +114,12 @@ describe('Convert numbers to English', () => {
     expect(program.number2English(n`2,178,970,809`)).toBe('two billion, one hundred seventy-eight million, nine hundred and seventy thousand, eight hundred and nine');
     expect(program.number2English(n`3,909,655,979,275,330,256,896`)).toBe('three sextillion, nine hundred and nine quintillion, six hundred fifty-five quadrillion, nine hundred seventy-nine trillion, two hundred seventy-five billion, three hundred and thirty million, two hundred fifty-six thousand, eight hundred ninety-six');
   });
+
+  test('convert negative numbers', () => {
+    expect(program.number2English(n`-1`)).toBe('minus one');
+    expect(program.number2English(n`-23`)).toBe('minus twenty-three');
+    expect(program.number2English(n`-203`)).toBe('minus two hundred and three');
+    expect(program.number2English(n`-5,023`)).toBe('minus five thousand and twenty-three');
+    expect(program.number2English(n`-2,178,970,809`)).toBe('minus two billion, one hundred seventy-eight million, nine hundred and seventy thousand, eight hundred and nine');
+  });  
 });
