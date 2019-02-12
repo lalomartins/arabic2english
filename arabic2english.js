@@ -13,7 +13,11 @@ function processCommandLine() {
     if (isNaN(arg)) {
       process.stderr.write(`Invalid input: '${arg}'\n`);
     } else {
-      process.stdout.write(m.number2English(Number(arg)) + '\n');
+      try {
+        process.stdout.write(m.number2English(Number(arg)) + '\n');
+      } catch (e) {
+        process.stderr.write(`Error: ${e} ('${arg}')\n`);
+      }
     }
   }
 }
