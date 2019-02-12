@@ -14,7 +14,7 @@ function number2English(num) {
     return dictionary.teens[num - 10];
   }
   if (num < 100) {
-    const tens = dictionary.tens[Math.floor(num / 10) % 10];
+    const tens = dictionary.tens[Math.floor(num / 10)];
     if (num % 10 === 0) {
       return tens;
     } else {
