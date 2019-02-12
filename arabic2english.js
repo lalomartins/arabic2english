@@ -2,14 +2,17 @@ const bignum = require('bignumber.js');
 
 const dictionary = require('./dictionary');
 
-const BOUND_LOWER = 0;
-const BOUND_UPPER = Math.pow(10, 66);
+const BOUND_UPPER = bignum(10).pow(66);
+const BOUND_LOWER = BOUND_UPPER.negated();
 
 const n = (strings) => bignum(strings[0].replace(/[\s,_]/g, ''));
 
 function number2English(num) {
-  if (num >= BOUND_UPPER || num < BOUND_LOWER) {
+  if (num.gte(BOUND_UPPER) || num.lte(BOUND_LOWER)) {
     throw 'Input out of bounds';
+  }
+  if (num < 0) {
+    return 'minus ' + number2English(num.negated());
   }
   if (num < 10) {
     return dictionary.singles[num];
@@ -22,27 +25,27 @@ function number2English(num) {
     if (num % 10 === 0) {
       return tens;
     } else {
-      return `${tens}-${number2English(num % 10)}`;
+      return `${tens}-${number2English(num.mod(10))}`;
     }
   }
   if (num < 1000) {
-    const hundreds = `${number2English(Math.floor(num / 100))} hundred`;
+    const hundreds = `${number2English(num.idiv(100))} hundred`;
     if (num % 100 === 0) {
       return hundreds;
     } else if (num % 100 < 20 || num % 10 === 0) {
-      return `${hundreds} and ${number2English(num % 100)}`;
+      return `${hundreds} and ${number2English(num.mod(100))}`;
     } else {
-      return `${hundreds} ${number2English(num % 100)}`;
+      return `${hundreds} ${number2English(num.mod(100))}`;
     }
   }
   if (num < 1000000) {
-    const thousands = `${number2English(Math.floor(num / 1000))} thousand`;
+    const thousands = `${number2English(num.idiv(1000))} thousand`;
     if (num % 1000 === 0) {
       return thousands;
     } else if (num % 1000 < 100 || num % 100 === 0) {
-      return `${thousands} and ${number2English(num % 1000)}`;
+      return `${thousands} and ${number2English(num.mod(1000))}`;
     } else {
-      return `${thousands}, ${number2English(num % 1000)}`;
+      return `${thousands}, ${number2English(num.mod(1000))}`;
     }
   }
 

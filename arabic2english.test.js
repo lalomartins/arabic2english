@@ -69,7 +69,6 @@ describe('Convert numbers to English', () => {
 
   test('throws if out of bonds', () => {
     expect(() => program.number2English(bignum(10).pow(75))).toThrow('Input out of bounds');
-    expect(() => program.number2English(n`-1`)).toThrow('Input out of bounds');
   });
 
   test('converts double-digit numbers', () => {
