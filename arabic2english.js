@@ -1,4 +1,7 @@
 function number2English(num) {
+  if (num > 9) {
+    throw('Input out of bounds');
+  }
 }
 
 function processCommandLine() {
