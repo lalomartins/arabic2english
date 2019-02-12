@@ -1,7 +1,11 @@
+const bignum = require('bignumber.js');
+
 const dictionary = require('./dictionary');
 
 const BOUND_LOWER = 0;
 const BOUND_UPPER = Math.pow(10, 66);
+
+const n = (strings) => bignum(strings[0].replace(/[\s,_]/g, ''));
 
 function number2English(num) {
   if (num >= BOUND_UPPER || num < BOUND_LOWER) {
@@ -42,21 +46,21 @@ function number2English(num) {
 }
 
 function processCommandLine() {
-  const args = process.argv.slice(2);
-  for (const arg of args) {
-    if (isNaN(arg)) {
-      process.stderr.write(`Invalid input: '${arg}'\n`);
-    } else {
-      try {
-        process.stdout.write(m.number2English(Number(arg)) + '\n');
-      } catch (e) {
-        process.stderr.write(`Error: ${e} ('${arg}')\n`);
-      }
+  const arg = process.argv.slice(2).join(' ');
+  const num = n(arg);
+  if (num.isNaN()) {
+    process.stderr.write(`Invalid input: '${arg}'\n`);
+  } else {
+    try {
+      process.stdout.write(m.number2English(num) + '\n');
+    } catch (e) {
+      process.stderr.write(`Error: ${e} ('${arg}')\n`);
     }
   }
 }
 
 const m = (module.exports = {
+  n,
   number2English,
   processCommandLine,
 });
