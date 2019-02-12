@@ -47,3 +47,25 @@ describe('Invalid command line', () => {
     expect(errMock).toBeCalledWith("Invalid input: 'foo'\n");
   });
 });
+
+describe('Convert numbers to English', () => {
+  test('converts zero', () => {
+    expect(program.number2English(0)).toBe('zero');
+  });
+
+  test('converts single-digit numbers', () => {
+    expect(program.number2English(1)).toBe('one');
+    expect(program.number2English(2)).toBe('two');
+    expect(program.number2English(3)).toBe('three');
+    expect(program.number2English(4)).toBe('four');
+    expect(program.number2English(5)).toBe('five');
+    expect(program.number2English(6)).toBe('six');
+    expect(program.number2English(7)).toBe('seven');
+    expect(program.number2English(8)).toBe('eight');
+    expect(program.number2English(9)).toBe('nine');
+  });
+
+  test('throws if out of bonds', () => {
+    expect(() => program.number2English(10)).toThrow('Input out of bounds');
+  });
+});
