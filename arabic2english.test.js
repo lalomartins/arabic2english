@@ -69,4 +69,16 @@ describe('Convert numbers to English', () => {
     expect(() => program.number2English(10)).toThrow('Input out of bounds');
     expect(() => program.number2English(-1)).toThrow('Input out of bounds');
   });
+
+  test('converts double-digit numbers', () => {
+    expect(program.number2English(10)).toBe('ten');
+    expect(program.number2English(11)).toBe('eleven');
+    expect(program.number2English(12)).toBe('twelve');
+    expect(program.number2English(13)).toBe('thirteen');
+    expect(program.number2English(17)).toBe('seventeen');
+    expect(program.number2English(23)).toBe('twenty-three');
+    expect(program.number2English(50)).toBe('fifty');
+    expect(program.number2English(75)).toBe('seventy-five');
+    expect(program.number2English(99)).toBe('ninety-nine');
+  });
 });
