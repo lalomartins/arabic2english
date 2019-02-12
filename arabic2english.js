@@ -1,7 +1,8 @@
-const UPPER_BOUND = 10;
+const BOUND_LOWER = 0;
+const BOUND_UPPER = 10;
 
 function number2English(num) {
-  if (num >= UPPER_BOUND) {
+  if (num >= BOUND_UPPER || num < BOUND_LOWER) {
     throw('Input out of bounds');
   }
 }
