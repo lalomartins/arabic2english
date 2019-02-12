@@ -120,5 +120,9 @@ describe('Convert numbers to English', () => {
     expect(program.number2English(n`-203`)).toBe('minus two hundred and three');
     expect(program.number2English(n`-5,023`)).toBe('minus five thousand and twenty-three');
     expect(program.number2English(n`-2,178,970,809`)).toBe('minus two billion, one hundred seventy-eight million, nine hundred and seventy thousand, eight hundred and nine');
-  });  
+  });
+
+  test('converts plain numbers', () => {
+    expect(program.number2English(23)).toBe('twenty-three');
+  });
 });
