@@ -67,5 +67,6 @@ describe('Convert numbers to English', () => {
 
   test('throws if out of bonds', () => {
     expect(() => program.number2English(10)).toThrow('Input out of bounds');
+    expect(() => program.number2English(-1)).toThrow('Input out of bounds');
   });
 });
