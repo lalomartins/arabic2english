@@ -66,7 +66,7 @@ describe('Convert numbers to English', () => {
   });
 
   test('throws if out of bonds', () => {
-    expect(() => program.number2English(100)).toThrow('Input out of bounds');
+    expect(() => program.number2English(1000)).toThrow('Input out of bounds');
     expect(() => program.number2English(-1)).toThrow('Input out of bounds');
   });
 
@@ -80,5 +80,14 @@ describe('Convert numbers to English', () => {
     expect(program.number2English(50)).toBe('fifty');
     expect(program.number2English(75)).toBe('seventy-five');
     expect(program.number2English(99)).toBe('ninety-nine');
+  });
+
+  test('converts triple-digit numbers', () => {
+    expect(program.number2English(100)).toBe('one hundred');
+    expect(program.number2English(123)).toBe('one hundred twenty-three');
+    expect(program.number2English(203)).toBe('two hundred and three');
+    expect(program.number2English(500)).toBe('five hundred');
+    expect(program.number2English(717)).toBe('seven hundred and seventeen');
+    expect(program.number2English(750)).toBe('seven hundred and fifty');
   });
 });
