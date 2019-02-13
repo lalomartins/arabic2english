@@ -9,7 +9,7 @@ const n = (strings) => bignum(strings[0].replace(/[\s,_]/g, ''));
 
 function number2English(num) {
   if (typeof num === 'number') {
-    return number2English(bignum(num));
+    num = bignum(num);
   }
   if (num.gte(BOUND_UPPER) || num.lte(BOUND_LOWER)) {
     throw 'Input out of bounds';
