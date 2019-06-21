@@ -2,6 +2,8 @@
 
 Spell out numbers in English.
 
+This was done as an exercise and is not being used or updated. Feel free to learn from the code or use it as a basis for other stuff, but I wouldn't recommend using it directly.
+
 ## Preparation
 
 Before using, run `npm -i` once.
